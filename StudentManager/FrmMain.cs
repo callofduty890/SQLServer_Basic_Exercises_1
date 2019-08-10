@@ -98,6 +98,15 @@ namespace StudentManager
           
         }
 
+        private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult result = MessageBox.Show("确认退出吗?", "退出询问",MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (result!=DialogResult.OK)
+            {
+                //取消当前的关闭操作
+                e.Cancel = true;
+            }
 
+        }
     }
 }

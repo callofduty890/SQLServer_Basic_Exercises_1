@@ -21,7 +21,14 @@ namespace StudentManager
         //添加新学员
         private void btnAdd_Click(object sender, EventArgs e)
         {
-         
+            //判断用户输入的是否是复合要求的数据
+            if (Common.DataValidate.IsIdentityCard(this.txtStudentIdNo.Text.Trim()))
+            {
+                MessageBox.Show("身份证不符合要求!","验证提示");
+                //创建焦点
+                this.txtStudentIdNo.Focus();
+                return;
+            }
         }
         //关闭窗体
         private void btnClose_Click(object sender, EventArgs e)
