@@ -33,8 +33,9 @@ namespace StudentManager
                 //退出整个应用程序
                 Application.Exit();
             }
-            
         }
-
+        //定义一个全局变量保存对象 其他窗口可以通过类名直接访问到
+        public static Models.SysAdmin objCurrentAdmin = null;
+        
     }
 }
