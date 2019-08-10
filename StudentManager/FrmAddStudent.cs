@@ -31,7 +31,7 @@ namespace StudentManager
         //窗体已经被关闭
         private void FrmAddStudent_FormClosed(object sender, FormClosedEventArgs e)
         {
-           
+            FrmMain.objFrmAddStudent = null;//当窗体关闭时,将窗体对象清理掉
         }
     }
 }

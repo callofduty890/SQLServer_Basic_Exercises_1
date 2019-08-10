@@ -24,10 +24,23 @@ namespace StudentManager
         //    objAddStudent.ShowDialog();
         //}
 
-   
+        //添加学员
+        public static FrmAddStudent objFrmAddStudent = null; //窗体对象
         private void tsmiAddStudent_Click(object sender, EventArgs e)
         {
-        
+            if (objFrmAddStudent == null)
+            {
+                //创建实例化对象
+                objFrmAddStudent = new FrmAddStudent();
+                //显示对象
+                objFrmAddStudent.Show();
+            }
+            else
+            {
+                objFrmAddStudent.Activate();//激活窗口
+                objFrmAddStudent.WindowState = FormWindowState.Normal;//设置窗口状态
+            }
+
         }
    
         private void tsmiManageStudent_Click(object sender, EventArgs e)
