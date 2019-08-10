@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DAL">
+      <HintPath>..\DAL\bin\Debug\DAL.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -170,10 +173,6 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DAL\DAL.csproj">
-      <Project>{c06f52fe-7148-434f-9e33-729e68659e20}</Project>
-      <Name>DAL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Models\Models.csproj">
       <Project>{a8f110fd-b5df-4b81-a58e-d6c2c443ea56}</Project>
       <Name>Models</Name>
