@@ -19,7 +19,7 @@ namespace DAL.Helper
         /// <returns></returns>
         public static int Update(string sql)
         {
-            SqlConnection conn = new SqlConnection(sql);
+            SqlConnection conn = new SqlConnection(connstring);
             SqlCommand cmd = new SqlCommand(sql, conn);
             try
             {
@@ -43,7 +43,7 @@ namespace DAL.Helper
         /// <returns></returns>
         public static object GetSingleResult(string sql)
         {
-            SqlConnection conn = new SqlConnection(sql);
+            SqlConnection conn = new SqlConnection(connstring);
             SqlCommand cmd = new SqlCommand(sql, conn);
             try
             {
@@ -67,7 +67,7 @@ namespace DAL.Helper
         /// <returns></returns>
         public static SqlDataReader GetReader(String sql)
         {
-            SqlConnection conn = new SqlConnection(sql);
+            SqlConnection conn = new SqlConnection(connstring);
             SqlCommand cmd = new SqlCommand(sql, conn);
             try
             {
