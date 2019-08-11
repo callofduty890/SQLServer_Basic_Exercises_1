@@ -30,7 +30,7 @@ namespace DAL
                 {
                     ClassId = Convert.ToInt32(objReader["ClassId"]),
                     ClassName = objReader["ClassName"].ToString()
-                });   
+                });
             }
             //关闭
             objReader.Close();
