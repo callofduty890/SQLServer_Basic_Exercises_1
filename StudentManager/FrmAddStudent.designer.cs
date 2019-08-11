@@ -253,6 +253,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "[添加新学员]";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmAddStudent_FormClosed);
+            this.Load += new System.EventHandler(this.FrmAddStudent_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

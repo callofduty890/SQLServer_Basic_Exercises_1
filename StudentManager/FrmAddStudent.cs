@@ -6,16 +6,24 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
+using DAL;
+using Models;
 
 namespace StudentManager
 {
     public partial class FrmAddStudent : Form
     {
-     
+        private StudentClassService objClassService = new StudentClassService();
+
         public FrmAddStudent()
         {
             InitializeComponent();
-         
+            //初始化班级下拉框
+            this.cboClassName.DataSource = objClassService.GetAllClasses();
+            //设置显示属性
+            this.cboClassName.DisplayMember = "ClassName";
+            //设置对应的班级ID
+            this.cboClassName.ValueMember = "ClassId";
         }
 
         //添加新学员
@@ -39,6 +47,11 @@ namespace StudentManager
         private void FrmAddStudent_FormClosed(object sender, FormClosedEventArgs e)
         {
             FrmMain.objFrmAddStudent = null;//当窗体关闭时,将窗体对象清理掉
+        }
+
+        private void FrmAddStudent_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
