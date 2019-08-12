@@ -66,6 +66,7 @@
             this.txtStudentName.Name = "txtStudentName";
             this.txtStudentName.Size = new System.Drawing.Size(100, 21);
             this.txtStudentName.TabIndex = 0;
+            this.txtStudentName.Text = "教练";
             // 
             // label2
             // 
@@ -101,6 +102,7 @@
             this.txtStudentIdNo.Name = "txtStudentIdNo";
             this.txtStudentIdNo.Size = new System.Drawing.Size(198, 21);
             this.txtStudentIdNo.TabIndex = 5;
+            this.txtStudentIdNo.Text = "452702199402164778";
             // 
             // label5
             // 
@@ -118,6 +120,7 @@
             this.txtPhoneNumber.Name = "txtPhoneNumber";
             this.txtPhoneNumber.Size = new System.Drawing.Size(198, 21);
             this.txtPhoneNumber.TabIndex = 7;
+            this.txtPhoneNumber.Text = "13710494649";
             // 
             // label6
             // 
@@ -135,6 +138,7 @@
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(198, 21);
             this.txtAddress.TabIndex = 8;
+            this.txtAddress.Text = "Adress";
             // 
             // rdoMale
             // 
@@ -165,6 +169,7 @@
             this.dtpBirthday.Name = "dtpBirthday";
             this.dtpBirthday.Size = new System.Drawing.Size(105, 21);
             this.dtpBirthday.TabIndex = 3;
+            this.dtpBirthday.Value = new System.DateTime(1994, 2, 16, 20, 47, 0, 0);
             // 
             // label7
             // 
@@ -221,6 +226,7 @@
             this.txtCardNo.Name = "txtCardNo";
             this.txtCardNo.Size = new System.Drawing.Size(198, 21);
             this.txtCardNo.TabIndex = 6;
+            this.txtCardNo.Text = "0004016487";
             // 
             // FrmAddStudent
             // 
