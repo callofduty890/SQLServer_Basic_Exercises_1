@@ -5,7 +5,6 @@ using System.Runtime.InteropServices;
 // 有关程序集的常规信息通过以下
 // 特性集控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("DAL")]
 [assembly: AssemblyDescription("课程直播网址：xiketang.ke.qq.com")]
 [assembly: AssemblyConfiguration("VIP报名QQ：995551859")]
 [assembly: AssemblyCompany("课程官网：xiketang.com")]

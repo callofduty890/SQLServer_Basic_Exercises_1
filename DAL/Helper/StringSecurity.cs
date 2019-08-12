@@ -3,7 +3,7 @@ using System.Text;
 using System.IO;
 using System.Security.Cryptography;
 
-namespace StudentManager.Common
+namespace Common
 {
     /// <summary>
     /// ×Ö·û´®¼ÓÃÜ½âÃÜÀà

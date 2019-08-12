@@ -2,24 +2,31 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+
 using System.Data;
 using System.Data.SqlClient;
 
-namespace DAL.Helper
+using System.Configuration;//引入读取配置文件的命名空间
+
+namespace DAL
 {
+    /// <summary>
+    /// 通用数据访问类
+    /// </summary>
     public class SQLHelper
     {
-        //链接语句
-        public static string connstring= "Server=.;DataBase=StudentManageDB;Uid=sa;Pwd=123456";
+        private static string connString = "Server=.;DataBase=StudentManageDB;Uid=sa;Pwd=123456";
+
+        //public static readonly string connString = Common.StringSecurity.DESDecrypt(ConfigurationManager.ConnectionStrings["connString"].ToString());
 
         /// <summary>
-        /// 更新数据
+        /// 执行增、删、改方法
         /// </summary>
-        /// <param name="sql">SQL语句</param>
+        /// <param name="sql"></param>
         /// <returns></returns>
         public static int Update(string sql)
         {
-            SqlConnection conn = new SqlConnection(connstring);
+            SqlConnection conn = new SqlConnection(connString);
             SqlCommand cmd = new SqlCommand(sql, conn);
             try
             {
@@ -28,8 +35,9 @@ namespace DAL.Helper
             }
             catch (Exception ex)
             {
-                //将错误写入日志
-                throw;
+                //将错误信息写入日志...
+
+                throw ex;
             }
             finally
             {
@@ -37,13 +45,13 @@ namespace DAL.Helper
             }
         }
         /// <summary>
-        /// 执行获取单一结果
+        /// 执行单一结果（select）
         /// </summary>
         /// <param name="sql"></param>
         /// <returns></returns>
         public static object GetSingleResult(string sql)
         {
-            SqlConnection conn = new SqlConnection(connstring);
+            SqlConnection conn = new SqlConnection(connString);
             SqlCommand cmd = new SqlCommand(sql, conn);
             try
             {
@@ -52,8 +60,9 @@ namespace DAL.Helper
             }
             catch (Exception ex)
             {
-                //将错误写入日志
-                throw;
+                //将错误信息写入日志...
+
+                throw ex;
             }
             finally
             {
@@ -65,23 +74,49 @@ namespace DAL.Helper
         /// </summary>
         /// <param name="sql"></param>
         /// <returns></returns>
-        public static SqlDataReader GetReader(String sql)
+        public static SqlDataReader GetReader(string sql)
         {
-            SqlConnection conn = new SqlConnection(connstring);
+            SqlConnection conn = new SqlConnection(connString);
             SqlCommand cmd = new SqlCommand(sql, conn);
             try
             {
                 conn.Open();
-                //CommandBehavior.CloseConnection 枚举自动关闭
                 return cmd.ExecuteReader(CommandBehavior.CloseConnection);
             }
             catch (Exception ex)
             {
-                //关闭链接
                 conn.Close();
-                //将错误写入日志
+                //将错误信息写入日志...
 
-                throw;
+                throw ex;
+            }
+        }
+        /// <summary>
+        /// 执行查询返回一个DataSet
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <returns></returns>
+        public static DataSet GetDataSet(string sql)
+        {
+            SqlConnection conn = new SqlConnection(connString);
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);//创建数据适配器对象
+            DataSet ds = new DataSet();//创建一个内存数据集
+            try
+            {
+                conn.Open();
+                da.Fill(ds);//使用数据适配器填充数据集
+                return ds;
+            }
+            catch (Exception ex)
+            {
+                //将错误信息写入日志...
+
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
             }
         }
     }

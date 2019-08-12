@@ -14,58 +14,81 @@ namespace StudentManager
         {
             InitializeComponent();
 
+            //显示登录用户名
+            this.lblCurrentUser.Text = Program.objCurrentAdmin.AdminName + "]";
+
         }
 
-
-        ////显示添加学员窗体
-        //private void tsmiAddStudent_Click(object sender, EventArgs e)
-        //{
-        //    FrmAddStudent objAddStudent = new FrmAddStudent();
-        //    objAddStudent.ShowDialog();
-        //}
-
-        //添加学员
-        public static FrmAddStudent objFrmAddStudent = null; //窗体对象
+        public static FrmAddStudent objFrmAddStudent = null;
         private void tsmiAddStudent_Click(object sender, EventArgs e)
         {
             if (objFrmAddStudent == null)
             {
-                //创建实例化对象
                 objFrmAddStudent = new FrmAddStudent();
-                //显示对象
                 objFrmAddStudent.Show();
             }
             else
             {
-                objFrmAddStudent.Activate();//激活窗口
-                objFrmAddStudent.WindowState = FormWindowState.Normal;//设置窗口状态
+                objFrmAddStudent.Activate();//激活只能在最小化的时候起作用
+                objFrmAddStudent.WindowState = FormWindowState.Normal;
             }
-
         }
-   
+        //学员管理
+        public static FrmStudentManage objFrmStuManage = null;
         private void tsmiManageStudent_Click(object sender, EventArgs e)
         {
-          
+            if (objFrmStuManage == null)
+            {
+                objFrmStuManage = new FrmStudentManage();
+                objFrmStuManage.Show();
+            }
+            else
+            {
+                objFrmStuManage.Activate();
+                objFrmStuManage.WindowState = FormWindowState.Normal;
+            }
         }
-        //显示成绩查询与分析窗口    
+        //显示成绩查询与分析窗口
+        public static FrmScoreManage objFrmScoreManage = null;
         private void tsmiQueryAndAnalysis_Click(object sender, EventArgs e)
         {
+            if (objFrmScoreManage == null)
+            {
+                objFrmScoreManage = new FrmScoreManage();
+                objFrmScoreManage.Show();
+            }
+            else
+            {
+                objFrmScoreManage.Activate();
+                objFrmScoreManage.WindowState = FormWindowState.Normal;
+            }
         }
         //退出系统
         private void tmiClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-     
+
         //成绩快速查询
+        public static FrmScoreQuery objFrmScore = null;
         private void tsmiQuery_Click(object sender, EventArgs e)
         {
-       
+            if (objFrmScore == null)
+            {
+                objFrmScore = new FrmScoreQuery();
+                objFrmScore.Show();
+            }
+            else
+            {
+                objFrmScore.Activate();//激活只能在最小化的时候起作用
+                objFrmScore.WindowState = FormWindowState.Normal;
+            }
+         
         }
         //密码修改
         private void tmiModifyPwd_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void tsbAddStudent_Click(object sender, EventArgs e)
@@ -84,29 +107,29 @@ namespace StudentManager
         {
             tmiModifyPwd_Click(null, null);
         }
-        private void tsbExit_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+
         private void tsbQuery_Click(object sender, EventArgs e)
         {
             tsmiQuery_Click(null, null);
         }
-  
+
         private void tsmi_Card_Click(object sender, EventArgs e)
         {
-          
+
+        }
+        private void tsbExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult result = MessageBox.Show("确认退出吗?", "退出询问",MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            if (result!=DialogResult.OK)
+            DialogResult result = MessageBox.Show("确认退出吗？", "退出询问", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (result != DialogResult.OK)
             {
                 //取消当前的关闭操作
                 e.Cancel = true;
             }
-
         }
     }
 }

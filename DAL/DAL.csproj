@@ -30,10 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Models">
-      <HintPath>..\..\StudentManaged_TEST\Models\bin\Debug\Models.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -43,11 +41,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helper\SQLHelper.cs" />
+    <Compile Include="Helper\StringSecurity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScoreListService.cs" />
     <Compile Include="StudentClassService.cs" />
     <Compile Include="StudentService.cs" />
     <Compile Include="SysAdminService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Models\Models.csproj">
+      <Project>{a8f110fd-b5df-4b81-a58e-d6c2c443ea56}</Project>
+      <Name>Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

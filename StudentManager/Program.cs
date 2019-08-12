@@ -17,25 +17,20 @@ namespace StudentManager
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            //创建登录窗口
+            //创建登录窗体
             FrmUserLogin objFrmLogin = new FrmUserLogin();
-            //设定为当前窗口所有者控制-也就是这个窗体结束后才能接着下面运行
             DialogResult result = objFrmLogin.ShowDialog();
+
 
             //判断登录是否成功
             if (result == DialogResult.OK)
-            {
-                //运行主窗体
                 Application.Run(new FrmMain());
-            }
             else
-            {
-                //退出整个应用程序
-                Application.Exit();
-            }
+                Application.Exit();//退出整个应用程序
         }
-        //定义一个全局变量保存对象 其他窗口可以通过类名直接访问到
+
+        //定义一个全局变量保存用户对象
         public static Models.SysAdmin objCurrentAdmin = null;
-        
+
     }
 }

@@ -196,7 +196,7 @@
             this.toolStripStatusLabel2,
             this.toolStripStatusLabel1,
             this.lblCurrentUser});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 639);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 707);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1264, 22);
             this.statusStrip1.TabIndex = 6;
@@ -317,7 +317,7 @@
             this.plImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.plImage.Location = new System.Drawing.Point(30, 72);
             this.plImage.Name = "plImage";
-            this.plImage.Size = new System.Drawing.Size(1207, 548);
+            this.plImage.Size = new System.Drawing.Size(1207, 616);
             this.plImage.TabIndex = 8;
             // 
             // contextMenuStrip1
@@ -329,7 +329,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1264, 661);
+            this.ClientSize = new System.Drawing.Size(1264, 729);
             this.Controls.Add(this.plImage);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.statusStrip1);

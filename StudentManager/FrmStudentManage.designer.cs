@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmStudentManage));
             this.label1 = new System.Windows.Forms.Label();
             this.cboClass = new System.Windows.Forms.ComboBox();
@@ -89,6 +90,14 @@
             this.dgvStudentList.AllowUserToAddRows = false;
             this.dgvStudentList.AllowUserToDeleteRows = false;
             this.dgvStudentList.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvStudentList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvStudentList.ColumnHeadersHeight = 28;
             this.dgvStudentList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.StudentId,
@@ -97,14 +106,14 @@
             this.Birthday,
             this.ClassName});
             this.dgvStudentList.ContextMenuStrip = this.contextMenuStrip1;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Blue;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvStudentList.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvStudentList.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvStudentList.Location = new System.Drawing.Point(12, 57);
             this.dgvStudentList.Name = "dgvStudentList";
             this.dgvStudentList.ReadOnly = true;
@@ -156,18 +165,19 @@
             this.tsmiModifyStu,
             this.tsmidDeleteStu});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(137, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 70);
             // 
             // tsmiModifyStu
             // 
             this.tsmiModifyStu.Name = "tsmiModifyStu";
-            this.tsmiModifyStu.Size = new System.Drawing.Size(136, 22);
+            this.tsmiModifyStu.Size = new System.Drawing.Size(152, 22);
             this.tsmiModifyStu.Text = "修改学员(&M)";
+            this.tsmiModifyStu.Click += new System.EventHandler(this.tsmiModifyStu_Click);
             // 
             // tsmidDeleteStu
             // 
             this.tsmidDeleteStu.Name = "tsmidDeleteStu";
-            this.tsmidDeleteStu.Size = new System.Drawing.Size(136, 22);
+            this.tsmidDeleteStu.Size = new System.Drawing.Size(152, 22);
             this.tsmidDeleteStu.Text = "删除学员(&D)";
             // 
             // groupBox1

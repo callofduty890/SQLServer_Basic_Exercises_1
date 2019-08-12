@@ -30,9 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DAL">
-      <HintPath>..\DAL\bin\Debug\DAL.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,11 +43,10 @@
     <Compile Include="Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StudentClass.cs" />
+    <Compile Include="Ext\StudentExt.cs" />
     <Compile Include="SysAdmin.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Ext\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

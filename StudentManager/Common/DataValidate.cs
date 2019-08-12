@@ -36,5 +36,9 @@ namespace StudentManager.Common
             Regex objReg = new Regex(@"^(\d{15}$|^\d{18}$|^\d{17}(\d|X|x))$");
             return objReg.IsMatch(txt);
         }
+        //...其他正则表达式的验证，请学员自己根据所给正则表达式自己添加相应的方法
+
+
+
     }
 }
