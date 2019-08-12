@@ -69,8 +69,8 @@ namespace DAL
             {
                 //构建SQL语句
                 string sql = "select StudentName,StudentId,Gender,Birthday,ClassName from Students";
-                sql += "inner join StudentClass on Students.ClassId=StudentClass.ClassId";
-                sql += "where ClassName='{0}'";
+                sql += " inner join StudentClass on Students.ClassId=StudentClass.ClassId";
+                sql += " where ClassName='{0}'";
                 sql = string.Format(sql, className);
                 //执行SQL语句
                 SqlDataReader objReader = SQLHelper.GetReader(sql);

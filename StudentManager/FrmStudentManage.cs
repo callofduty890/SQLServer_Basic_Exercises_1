@@ -15,6 +15,7 @@ namespace StudentManager
     public partial class FrmStudentManage : Form
     {
         private StudentClassService objClassService = new StudentClassService();
+        private StudentService objStudentService = new StudentService();
 
         public FrmStudentManage()
         {
@@ -31,6 +32,16 @@ namespace StudentManager
         //按照班级查询
         private void btnQuery_Click(object sender, EventArgs e)
         {
+            if (this.cboClass.SelectionLength==-1)
+            {
+                MessageBox.Show("请选择班级!", "提示信息");
+                return;
+            }
+            //禁止生成其他列
+            this.dgvStudentList.AutoGenerateColumns = false;//不显示未封装的类
+
+            //执行查询
+            this.dgvStudentList.DataSource = objStudentService.GetStudentByClass(this.cboClass.Text);
         }
         //根据学号查询
         private void btnQueryById_Click(object sender, EventArgs e)
@@ -56,9 +67,10 @@ namespace StudentManager
         {
           
         }
+        //窗体关闭相应事件
         private void FrmSearchStudent_FormClosed(object sender, FormClosedEventArgs e)
         {
-
+            FrmMain.objFrmStudentManage = null;//当窗体关闭时,将窗体对象清理掉
         }
         //关闭
         private void btnClose_Click(object sender, EventArgs e)
