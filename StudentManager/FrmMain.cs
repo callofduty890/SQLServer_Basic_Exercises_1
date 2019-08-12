@@ -42,10 +42,22 @@ namespace StudentManager
             }
 
         }
-   
+        //学院管理系统
+        public static FrmStudentManage objFrmStudentManage = null;
         private void tsmiManageStudent_Click(object sender, EventArgs e)
         {
-          
+            if (objFrmStudentManage == null)
+            {
+                //创建实例化对象
+                objFrmStudentManage = new FrmStudentManage();
+                //显示对象
+                objFrmStudentManage.Show();
+            }
+            else
+            {
+                objFrmStudentManage.Activate();//激活窗口
+                objFrmStudentManage.WindowState = FormWindowState.Normal;//设置窗口状态
+            }
         }
         //显示成绩查询与分析窗口    
         private void tsmiQueryAndAnalysis_Click(object sender, EventArgs e)

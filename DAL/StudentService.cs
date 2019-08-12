@@ -58,5 +58,43 @@ namespace DAL
         }
 
         #endregion
+
+        #region 查询学员信息
+            /// <summary>
+            /// 根据班级名称查询学员信息
+            /// </summary>
+            /// <param name="className"></param>
+            /// <returns></returns>
+            public List<StudentExt> GetStudentByClass(string className)
+            {
+                //构建SQL语句
+                string sql = "select StudentName,StudentId,Gender,Birthday,ClassName from Students";
+                sql += "inner join StudentClass on Students.ClassId=StudentClass.ClassId";
+                sql += "where ClassName='{0}'";
+                sql = string.Format(sql, className);
+                //执行SQL语句
+                SqlDataReader objReader = SQLHelper.GetReader(sql);
+                //构建储存列表
+                List<StudentExt> list = new List<StudentExt>();
+                //循环
+                while (objReader.Read())
+                {
+                    list.Add(new StudentExt()
+                    {
+                        StudentId = Convert.ToInt32(objReader["studentId"]),
+                        StudentName = objReader["StudentName"].ToString(),
+                        Gender = objReader["Gender"].ToString(),
+                        Birthday = Convert.ToDateTime(objReader["Birthday"]),
+                        ClassName = objReader["ClassName"].ToString()
+
+                    });
+                }
+                //关闭连接
+                objReader.Close();
+                //返回结构
+                return list;
+            }
+        #endregion
+
     }
 }
