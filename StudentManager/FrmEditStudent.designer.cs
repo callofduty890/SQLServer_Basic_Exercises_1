@@ -275,6 +275,7 @@
             this.Name = "FrmEditStudent";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "[修改学员信息]";
+            this.Load += new System.EventHandler(this.FrmEditStudent_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

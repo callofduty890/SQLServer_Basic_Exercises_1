@@ -98,9 +98,14 @@ namespace StudentManager
             StudentExt objStudent = objStudentService.GetStudentById(studentId);
             //显示要修改的学员信息窗口
             FrmEditStudent objEditStudent = new FrmEditStudent(objStudent);
-
-            //判断
-            objEditStudent.Show();
+            //获取窗口执行的结果
+            DialogResult result = objEditStudent.ShowDialog();
+            //判断修改是否成功
+            if (result==DialogResult.OK)
+            {
+                btnQuery_Click(null, null);//同步显示刷新修改的信息
+            }
+            
         }       
         //删除学员对象
         private void btnDel_Click(object sender, EventArgs e)
