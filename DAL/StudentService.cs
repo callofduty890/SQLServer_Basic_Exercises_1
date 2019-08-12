@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using DAL.Helper;
 using Models;
 
+
 namespace DAL
 {
     public class StudentService
@@ -96,5 +97,37 @@ namespace DAL
             }
         #endregion
 
+        /// <summary>
+        /// 更加学员学号查询信息
+        /// </summary>
+        /// <param name="studentId"></param>
+        /// <returns></returns>
+        public StudentExt GetStudentById(string studentId)
+        {
+            //构建SQL语句
+            string sql = "select StudentId,StudentName,Gender,Birthday,StudentIdNo,CardNo,Age,PhoneNumber,StudentAddress,ClassName from Students inner join StudentClass on Students.ClassId=StudentClass.ClassId where StudentId=" + studentId;
+            //执行查询
+            SqlDataReader objReader = SQLHelper.GetReader(sql);
+            //设置对象
+            StudentExt objStudent = null;
+            //判断读取是否成功
+            if (objReader.Read())
+            {
+                objStudent = new StudentExt()
+                {
+                    StudentId = Convert.ToInt32(objReader["StudentId"]),
+                    StudentName = objReader["StudentName"].ToString(),
+                    Gender = objReader["Gender"].ToString(),
+                    Birthday = Convert.ToDateTime(objReader["Birthday"]),
+                    ClassName = objReader["ClassName"].ToString(),
+                    CardNo=objReader["CardNo"].ToString(),
+                    StudentIdNo=objReader["StudentIdNo"].ToString(),
+                    PhoneNumber=objReader["PhoneNumber"].ToString(),
+                    StudentAddress=objReader["StudentAddress"].ToString()
+                };
+            }
+            objReader.Close();
+            return objStudent;
+        }
     }
 }

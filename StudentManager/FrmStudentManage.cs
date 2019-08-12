@@ -46,7 +46,27 @@ namespace StudentManager
         //根据学号查询
         private void btnQueryById_Click(object sender, EventArgs e)
         {
-           
+            if (this.txtStudentId.Text.Trim().Length==0)
+            {
+                MessageBox.Show("请输入学号");
+                this.txtStudentId.Focus();
+                return;
+            }
+            //验证是否是数字
+
+            StudentExt objStudent = objStudentService.GetStudentById(this.txtStudentId.Text.Trim());
+            if (objStudent==null)
+            {
+                MessageBox.Show("学员学习不存在!", "提示信息");
+                this.txtStudentId.Focus();
+            }
+            else
+            {
+                //在学员详细信息窗体显示
+                FrmStudentInfo objFrmStuInfor = new FrmStudentInfo(objStudent);
+                objFrmStuInfor.Show();
+            }
+
         }
         private void txtStudentId_KeyDown(object sender, KeyEventArgs e)
         {
