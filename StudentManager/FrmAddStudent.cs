@@ -20,6 +20,7 @@ namespace StudentManager
         public FrmAddStudent()
         {
             InitializeComponent();
+
             //初始化班级下拉框
             this.cboClassName.DataSource = objClassService.GetAllClasses();
             this.cboClassName.DisplayMember = "ClassName";
@@ -136,11 +137,13 @@ namespace StudentManager
             {
                 if (objStudentService.AddStudent(objStudent) == 1)
                 {
-                    DialogResult result = MessageBox.Show("新学员添加成功！是否继续添加？", "提示信息", MessageBoxButtons.YesNo,
-                        MessageBoxIcon.Question);
+                    //返回SQL查询结果
+                    DialogResult result = MessageBox.Show("新学员添加成功！是否继续添加？", "提示信息", MessageBoxButtons.YesNo,MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)//清空用户的输入
                     {
+                        //下拉框设置
                         this.cboClassName.SelectedIndex = -1;
+                        //设置
                         this.rdoFemale.Checked = false;
                         this.rdoMale.Checked = false;
                         //清除文本框
@@ -153,7 +156,10 @@ namespace StudentManager
                     }
                 }
                 else
+                {
                     this.Close();
+                }
+                    
             }
             catch (Exception ex)
             {
