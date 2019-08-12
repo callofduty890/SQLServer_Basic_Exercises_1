@@ -80,7 +80,27 @@ namespace StudentManager
         //修改学员对象
         private void btnEidt_Click(object sender, EventArgs e)
         {
-          
+            //判断是否要修改
+            if (this.dgvStudentList.RowCount==0)
+            {
+                MessageBox.Show("没有选中要修改的信息!", "提示信息");
+                return;
+            }
+            //判断是否当前被选中的状态
+            if (this.dgvStudentList.CurrentRow==null)
+            {
+                MessageBox.Show("请选中要修改的学员信息!", "提示信息");
+                return;
+            }
+            //获取学号
+            string studentId = this.dgvStudentList.CurrentRow.Cells["StudentId"].Value.ToString();
+            //获取要修改的学员详细信息
+            StudentExt objStudent = objStudentService.GetStudentById(studentId);
+            //显示要修改的学员信息窗口
+            FrmEditStudent objEditStudent = new FrmEditStudent(objStudent);
+
+            //判断
+            objEditStudent.Show();
         }       
         //删除学员对象
         private void btnDel_Click(object sender, EventArgs e)

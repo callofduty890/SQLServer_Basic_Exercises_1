@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 
 using Models;
+using DAL;
 
 namespace StudentManager
 {
@@ -16,6 +17,8 @@ namespace StudentManager
         {
             InitializeComponent();
         }
+
+
         //注意this()会使用FrmStudentIfo()这个构造函数
         public FrmStudentInfo(StudentExt objStudent):this()
         {

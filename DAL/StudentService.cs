@@ -95,7 +95,6 @@ namespace DAL
                 //返回结构
                 return list;
             }
-        #endregion
 
         /// <summary>
         /// 更加学员学号查询信息
@@ -120,14 +119,80 @@ namespace DAL
                     Gender = objReader["Gender"].ToString(),
                     Birthday = Convert.ToDateTime(objReader["Birthday"]),
                     ClassName = objReader["ClassName"].ToString(),
-                    CardNo=objReader["CardNo"].ToString(),
-                    StudentIdNo=objReader["StudentIdNo"].ToString(),
-                    PhoneNumber=objReader["PhoneNumber"].ToString(),
-                    StudentAddress=objReader["StudentAddress"].ToString()
+                    CardNo = objReader["CardNo"].ToString(),
+                    StudentIdNo = objReader["StudentIdNo"].ToString(),
+                    PhoneNumber = objReader["PhoneNumber"].ToString(),
+                    StudentAddress = objReader["StudentAddress"].ToString()
                 };
             }
             objReader.Close();
             return objStudent;
         }
+        #endregion
+
+        #region 修改学员对象
+        /// <summary>
+        /// 判断身份证号是否和其他学员重复
+        /// </summary>
+        /// <param name="studentIdNo"></param>
+        /// <param name="studentId"></param>
+        /// <returns></returns>
+        public bool IsIdNoExisted(string studentIdNo,string studentId)
+        {
+            string sql = "select count(*) from Students where StudentIdNo={0} and StudentId<>{0}";
+            sql = string.Format(sql, studentIdNo, studentId);
+            int result = Convert.ToInt32(SQLHelper.GetSingleResult(sql));
+            if (result == 1) return true;
+            else return false;
+        }
+
+        /// <summary>
+        /// 修改学员对象
+        /// </summary>
+        /// <param name="objStudent"></param>
+        /// <returns></returns>
+        public int ModifyStudent(Student objStudent)
+        {
+            //搭建SQL语句框架
+            StringBuilder sqlBuilder=new StringBuilder();
+            sqlBuilder.Append("Update Students set " +
+                "StudentName='{0}'," +
+                "Gender='{1}'," +
+                "Birthday='{2}'," +
+                "StudentIdNo={3}," +
+                "CardNo={4}," +
+                "Age={5}," +
+                "PhoneNumber='{6}'," +
+                "StudentAddress='{7}'," +
+                "ClassId={8}");
+            sqlBuilder.Append(" where StudentId={9}");
+            //构建SQL语句
+            string sql = string.Format(sqlBuilder.ToString(),
+                objStudent.StudentName,
+                objStudent.Gender,
+                objStudent.Birthday,
+                objStudent.StudentIdNo,
+                objStudent.CardNo,
+                objStudent.Age,
+                objStudent.PhoneNumber,
+                objStudent.StudentAddress,
+                objStudent.ClassId,
+                objStudent.StudentId);
+            //进行访问
+            try
+            {
+                return SQLHelper.Update(sql);
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("数据库操作出现异常!具体信息" + ex.Message);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        #endregion
     }
 }
